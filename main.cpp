@@ -14,30 +14,30 @@ int main() {
 
 
 	ifstream fread; // для чтения из файла fin
-	char c;
-	int k = -1; // cчётчик сторк
+	char c; // для работы меню
+	int del_k; // строка которую удаляем
+	int k = 0; // cчётчик сторк
 	string new_stoka, stroka;
-	string path = "TODO_list.txt";
+	string path = "TODO_list.txt"; // имя файла
     
 
-	//начальный вывод
+	//считаем количество строк в файле
 	fread.open(path);
-	cout << "\nВаш TODO лист:\n";
 	while (!fread.eof())
 	{
+		k++;
 		stroka = "";
 		getline(fread, stroka);
-		cout <<" " + stroka << endl;
-		k++;
+
 	}
 	fread.close();
 
 	//меню
 mark0:
-	cout << "\n\n 1 - добавить пункт";
+	cout << "\n 1 - добавить пункт";
 	cout << "\n 2 - удалить пункт";
 	cout << "\n 3 - вывести лист";
-	cout << "\n 4 - удалить весь лист";
+	cout << "\n 7 - удалить весь лист";
 	cout << "\n 0 - выход\n";
 mark00:
 	c = _getch();
@@ -47,7 +47,7 @@ mark00:
 		case '1': goto mark1;
 		case '2': goto mark2;
 		case '3': goto mark3;
-		case '4': goto mark4;
+		case '7': goto mark4;
 		default:  goto mark00;
 	}
 
@@ -59,34 +59,44 @@ mark1:
 	if (new_stoka != ""){
 		k++;
 		e.add_line(path,new_stoka,k);
-		goto mark0;
 	}
 	else
 	{
-		cout << "Ошибка, пустые данные!";
-		goto mark0;
+		cout << "\nОшибка, пустые данные!\n";
 	}
-
-
-mark2:
-
-
-
-
-
-mark3:
-
-
-
-
-
-mark4:
-	ofstream fwrite;
-	fwrite.open(path);
-	fwrite.close();
 	goto mark0;
 
+mark2:
+	cout << "\nВведите сторку для удаляения:\n";
 
+	while (!(cin >> del_k) || (cin.peek() != '\n')) // чтобы можно было вводить только цифры
+	{
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Неверный тип данных!" << endl;
+	}
+
+	if (del_k <= 0 || del_k > k)
+	{
+		cout << "\nТакая сторка отсутсвует!\n";
+	}
+	else
+	{
+		e.delete_line(path, del_k);
+		k--;
+	}
+
+	
+	goto mark0;
+
+mark3:
+	e.write_list(path, stroka);
+	goto mark0;
+
+mark4:
+	e.delete_list(path);
+	k = 0;
+	goto mark0;
 
 
     return 0;
