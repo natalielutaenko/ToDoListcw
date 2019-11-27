@@ -5,14 +5,19 @@
 #include <fstream>
 using namespace std;
 class Engine{    
+	ofstream fout;
+	ifstream fin;
+	char c;
+	int k = -1; // cчётчик сторк
+	string new_stoka, stroka;
     string path = "TODO_list.txt";
+
 public:
     void add_line(string line);
     void delete_line(int number);
     void write_list();
     void delete_list();
-private:
-    void prepare_file();//for opening file
+	void check_file();
 };
 
 
