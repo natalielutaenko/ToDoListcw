@@ -61,26 +61,31 @@ int main() {
 
 	}
 	fread.close();
+	while (true) {
 
 
-	cout << "\n 1 - add line";
-	cout << "\n 2 - delete line";
-	cout << "\n 3 - write list";
-	cout << "\n 7 - delete all list";
-	cout << "\n 0 - exit\n";
+		cout << "\n 1 - add line";
+		cout << "\n 2 - delete line";
+		cout << "\n 3 - write list";
+		cout << "\n 7 - delete all list";
+		cout << "\n 0 - exit\n";
 
 
-	c = getchar();
-	switch (c)
-	{
+		c = getchar();
+
+		if (c == '\n')
+			c = getchar();
+
+		switch (c)
+		{
 		case '0':
-			cout << endl; 
-			return 0; 
+			cout << endl;
+			return 0;
 			break;
 		case '1':
 			add_line(engine);
 			break;
-		case '2': 
+		case '2':
 			delete_line(engine);
 			break;
 		case '3':
@@ -90,7 +95,7 @@ int main() {
 			delete_list(engine);
 			break;
 		default:  break;
+		}
 	}
-    
     return 0;
 }
