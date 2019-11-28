@@ -2,6 +2,8 @@ language: c++
 
 compiler: g++
 
+install:
+ - sudo apt-get install boost
 script:
  - cmake ~/build/natalielutaenko/ToDoListcw/src
  - ctest ~/build/natalielutaenko/ToDoListcw/test
