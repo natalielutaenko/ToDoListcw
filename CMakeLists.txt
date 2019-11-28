@@ -6,9 +6,6 @@ SET (CMAKE_ARCHIVE_OUTPUT_DIRECTORY
 
 enable_testing()
 
-find_package(Boost REQUIRED)
-
-include_directories(include)
 
 add_subdirectory( src build/src )
 add_subdirectory( test build/test )
