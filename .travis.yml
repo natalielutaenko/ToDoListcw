@@ -2,9 +2,6 @@ language: c++
 
 compiler: g++
 
-install:
- - source ci/travis/install-$TRAVIS_OS_NAME.sh
-
 script:
  - mkdir build
  - cd build
