@@ -3,16 +3,56 @@
 #include <fstream>
 //#include <cstdlib>
 #include "Engine.h"
+int k = -1;
+char c; // для работы меню
+int del_k; // строка которую удаляем
+int iterator = 0; // cчётчик сторк
+string new_line, line;
+void add_line(Engine e){
+	cout << "\n write new line :\n";
+	//getline(cin, new_line);
+	cin >> new_line;
+	if (new_line != "") {
+		k++;
+		e.add_line(new_line, k);
+	}
+	else
+	{
+		cout << "\nerror\n";
+	}
+}
+void delete_line(Engine e){
+	cout << "\nwrite line for delete:\n";
 
+	while (!(cin >> del_k) || (cin.peek() != '\n')) // чтобы можно было вводить только цифры
+	{
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "error" << endl;
+	}
+
+	if (del_k <= 0 || del_k > k)
+	{
+		cout << "\nТthis line not found\n";
+	}
+	else
+	{
+		e.delete_line(del_k);
+		k--;
+	}
+}
+void write_list(Engine e){ 
+	e.write_list(line); }
+void delete_list(Engine e){
+	e.delete_list();
+	k = 0;
+}
 int main() {
-    Engine e;
+    Engine engine;
     ifstream fread; // для чтения из файла fin
-	char c; // для работы меню
-	int del_k; // строка которую удаляем
-	int iterator = 0; // cчётчик сторк
-	string new_line, line;
+	
     
-	fread.open(path);
+	fread.open(engine.path);
 	while (!fread.eof())
 	{
 		k++;
@@ -22,70 +62,35 @@ int main() {
 	}
 	fread.close();
 
-mark0:
-	cout << "\n 1 - добавить пункт";
-	cout << "\n 2 - удалить пункт";
-	cout << "\n 3 - вывести лист";
-	cout << "\n 7 - удалить весь лист";
-	cout << "\n 0 - выход\n";
 
-mark00:
-	c = _getch();
+	cout << "\n 1 - add line";
+	cout << "\n 2 - delete line";
+	cout << "\n 3 - write list";
+	cout << "\n 7 - delete all list";
+	cout << "\n 0 - exit\n";
+
+
+	c = getchar();
 	switch (c)
 	{
-		case '0': cout << endl; return 0; break;
-		case '1': goto mark1;
-		case '2': goto mark2;
-		case '3': goto mark3;
-		case '7': goto mark4;
-		default:  goto mark00;
+		case '0':
+			cout << endl; 
+			return 0; 
+			break;
+		case '1':
+			add_line(engine);
+			break;
+		case '2': 
+			delete_line(engine);
+			break;
+		case '3':
+			write_list(engine);
+			break;
+		case '7':
+			delete_list(engine);
+			break;
+		default:  break;
 	}
     
-mark1:
-	cout << "\nВведите новый TODO пункт:\n";
-	getline(cin, new_line);
-	if (new_line != ""){
-		k++;
-		e.add_line(path,new_line,k);
-	}
-	else
-	{
-		cout << "\nОшибка, пустые данные!\n";
-	}
-	goto mark0;
-
-mark2:
-	cout << "\nВведите сторку для удаляения:\n";
-
-	while (!(cin >> del_k) || (cin.peek() != '\n')) // чтобы можно было вводить только цифры
-	{
-		cin.clear();
-		while (cin.get() != '\n');
-		cout << "Неверный тип данных!" << endl;
-	}
-
-	if (del_k <= 0 || del_k > k)
-	{
-		cout << "\nТакая сторка отсутсвует!\n";
-	}
-	else
-	{
-		e.delete_line(path, del_k);
-		k--;
-	}
-
-	
-	goto mark0;
-
-mark3:
-	e.write_list(path, line);
-	goto mark0;
-
-mark4:
-	e.delete_list(path);
-	k = 0;
-	goto mark0;
-
-
     return 0;
 }

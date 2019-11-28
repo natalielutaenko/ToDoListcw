@@ -6,8 +6,9 @@
 using namespace std;
 class Engine{    
 
-    string path = "TODO_list.txt";
+    
 public:
+	string path = "TODO_list.txt";
     
 	void add_line(string line, int k);
     void delete_line(int del_k);
