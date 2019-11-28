@@ -3,5 +3,5 @@ language: c++
 compiler: g++
 
 script:
- - cmake ~/
+ - cmake ~/build/natalielutaenko/ToDoListcw
  - ctest --output-on-failure
