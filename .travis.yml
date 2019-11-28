@@ -3,5 +3,5 @@ language: c++
 compiler: g++
 
 script:
- - cmake 
+ - cmake ~/
  - ctest --output-on-failure
