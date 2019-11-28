@@ -6,11 +6,13 @@
 using namespace std;
 class Engine{    
 
+    string path = "TODO_list.txt";
 public:
-	void add_line(string path,string line, int k);
-    void delete_line(string path, int del_k);
-    void write_list(string path, string stroka);
-	void delete_list(string path);
+    
+	void add_line(string line, int k);
+    void delete_line(int del_k);
+    void write_list(string line);
+	void delete_list();
 };
 
 

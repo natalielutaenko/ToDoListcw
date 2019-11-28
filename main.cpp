@@ -1,44 +1,34 @@
 #include <iostream>
-#include <Windows.h>
 #include <string>
 #include <fstream>
-#include <conio.h>
-#include <cstdlib>
+//#include <cstdlib>
 #include "Engine.h"
 
 int main() {
     Engine e;
-
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-
-
-	ifstream fread; // для чтения из файла fin
+    ifstream fread; // для чтения из файла fin
 	char c; // для работы меню
 	int del_k; // строка которую удаляем
-	int k = 0; // cчётчик сторк
-	string new_stoka, stroka;
-	string path = "TODO_list.txt"; // имя файла
+	int iterator = 0; // cчётчик сторк
+	string new_line, line;
     
-
-	//считаем количество строк в файле
 	fread.open(path);
 	while (!fread.eof())
 	{
 		k++;
-		stroka = "";
-		getline(fread, stroka);
+		line = "";
+		getline(fread, line);
 
 	}
 	fread.close();
 
-	//меню
 mark0:
 	cout << "\n 1 - добавить пункт";
 	cout << "\n 2 - удалить пункт";
 	cout << "\n 3 - вывести лист";
 	cout << "\n 7 - удалить весь лист";
 	cout << "\n 0 - выход\n";
+
 mark00:
 	c = _getch();
 	switch (c)
@@ -50,15 +40,13 @@ mark00:
 		case '7': goto mark4;
 		default:  goto mark00;
 	}
-
-
-	//добавление
+    
 mark1:
 	cout << "\nВведите новый TODO пункт:\n";
-	getline(cin, new_stoka);
-	if (new_stoka != ""){
+	getline(cin, new_line);
+	if (new_line != ""){
 		k++;
-		e.add_line(path,new_stoka,k);
+		e.add_line(path,new_line,k);
 	}
 	else
 	{
@@ -90,7 +78,7 @@ mark2:
 	goto mark0;
 
 mark3:
-	e.write_list(path, stroka);
+	e.write_list(path, line);
 	goto mark0;
 
 mark4:
