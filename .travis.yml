@@ -3,7 +3,5 @@ language: c++
 compiler: g++
 
 script:
- - mkdir build
- - cd build
- - cmake --build .
+ - cmake 
  - ctest --output-on-failure
