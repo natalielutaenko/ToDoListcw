@@ -8,7 +8,7 @@ void Engine::add_line(string path, string line, int k){
 	fwrite.close();
 };
 
-void Engine::delete_line(string path, int del_k){
+void Engine::delete_line(string path, int del_k){//bla bla
 
 	int kk = 0; //счётчик строк
 	string line; //для хранения строки
