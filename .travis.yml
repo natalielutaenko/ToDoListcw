@@ -6,7 +6,5 @@ install:
  - sudo apt-get install make
 
 script:
- - cmake ~/build/natalielutaenko/ToDoListcw/CMakeLists.txt
- - ls
- - make ~/build/natalielutaenko/ToDoListcw/Makefile
- - ctest ~/build/natalielutaenko/ToDoListcw
+ - cd ~/build/natalielutaenko/ToDoListcw/
+ - cmake CMakeLists.txt && make && ctest
