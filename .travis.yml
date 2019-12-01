@@ -2,6 +2,8 @@ language: c++
 
 compiler: g++
 
+install:
+ - sudo apt-get install make
 
 script:
  - cmake ~/build/natalielutaenko/ToDoListcw/CMakeLists.txt
