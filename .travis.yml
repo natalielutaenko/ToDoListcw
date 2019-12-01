@@ -6,12 +6,16 @@ apt:
 sources:
 - ubuntu-toolchain-r-test
 packages:
+- gcc-7
 - g++-7
-install:
- - sudo apt-get install make
+- cmake
+- make
 
 script:
- - export CC=gcc-7
- - export CXX=g++-7
+ - ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
+ - ln -s /usr/bin/g++-7 /usr/local/bin/g++
+ - export CC=/usr/bin/gcc-7
+ - export CXX=/usr/bin/g++-7
+ - gcc -v && g++ -v && cmake --version
  - cd ~/build/natalielutaenko/ToDoListcw/
  - cmake CMakeLists.txt && make && ctest
