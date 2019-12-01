@@ -2,8 +2,8 @@ language: c++
 
 compiler: g++
 
-install:
- - sudo apt-get install libboost-all-dev
+
 script:
- - cmake ~/build/natalielutaenko/ToDoListcw/src
- - ctest ~/build/natalielutaenko/ToDoListcw/test
+ - cmake ~/build/natalielutaenko/ToDoListcw/CMakeLists.txt
+ - make ~/build/natalielutaenko/ToDoListcw
+ - ctest ~/build/natalielutaenko/ToDoListcw

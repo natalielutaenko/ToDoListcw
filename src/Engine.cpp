@@ -1,11 +1,14 @@
 #include "Engine.h"
 #include <string>
 
-void Engine::add_line(string line, int k){
+int Engine::add_line(string line, int k){
 	ofstream fwrite;
 	fwrite.open(path, ofstream::app);
+    if(!fwrite.is_open())
+        return -1;
 	fwrite << line << endl;
 	fwrite.close();
+    return 0;
 };
 
 void Engine::delete_line(int del_k){

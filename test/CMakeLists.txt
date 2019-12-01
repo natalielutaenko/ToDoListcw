@@ -1,10 +1,7 @@
 project(tests)
-enable_testing()
 
-find_package (Boost COMPONENTS unit_test_framework REQUIRED)
-
-set(test1_source main.cpp)
+set(test1_source test.cpp)
 add_executable(test1 ${test1_source})
-
+target_link_libraries(test1 engine)
 
 add_test(NAME Test1 COMMAND test1)
