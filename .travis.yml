@@ -1,19 +1,8 @@
 language: c++
 
-compiler: g++
-addons:
-apt:
-sources:
-- ubuntu-toolchain-r-test
-packages:
-- gcc-7
-- g++-7
-- cmake
-- make
+compiler: g++-7
 
 script:
- - export CC=gcc-7
- - export CXX=g++-7
  - gcc -v && g++ -v && cmake --version
  - cd ~/build/natalielutaenko/ToDoListcw/
  - cmake CMakeLists.txt && make && ctest
