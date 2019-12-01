@@ -1,6 +1,8 @@
+dist: bionic
+
 language: c++
 
-compiler: g++-7
+compiler: g++
 
 script:
  - gcc -v && g++ -v && cmake --version
