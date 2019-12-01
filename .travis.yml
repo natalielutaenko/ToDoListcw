@@ -5,6 +5,5 @@ language: c++
 compiler: g++
 
 script:
- - gcc -v && g++ -v && cmake --version
  - cd ~/build/natalielutaenko/ToDoListcw/
  - cmake CMakeLists.txt && make && ctest
