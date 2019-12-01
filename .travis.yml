@@ -7,6 +7,6 @@ install:
 
 script:
  - cmake ~/build/natalielutaenko/ToDoListcw/CMakeLists.txt
-  - ls ~/build/natalielutaenko/ToDoListcw
+ - ls 
  - make ~/build/natalielutaenko/ToDoListcw
  - ctest ~/build/natalielutaenko/ToDoListcw
