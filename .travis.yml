@@ -1,10 +1,17 @@
 language: c++
 
 compiler: g++
-
+addons:
+apt:
+sources:
+- ubuntu-toolchain-r-test
+packages:
+- g++-7
 install:
  - sudo apt-get install make
 
 script:
+- export CC=gcc-7
+- export CXX=g++-7
  - cd ~/build/natalielutaenko/ToDoListcw/
  - cmake CMakeLists.txt && make && ctest
