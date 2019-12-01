@@ -1,10 +1,9 @@
-#include <iostream>
-#include "Engine.h"
-
-int main(const int argc, const char *argv[]) {
-    Engine e;
-    e.add_line(argv[0],argv[1]);
-    e.delete_line(argv[1]);
-    
-    return 0;
+#include <boost/test/unit_test.hpp>
+BOOST_AUTO_TEST_SUITE(TestList)
+BOOST_AUTO_TEST_CASE(Equal) {
+  const float
+      a = 3, b = 3;
+  BOOST_REQUIRE_EQUAL(a,b);
 }
+
+BOOST_AUTO_TEST_SUITE_END()
