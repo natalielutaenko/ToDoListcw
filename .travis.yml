@@ -1,6 +1,6 @@
 language: c++
 
-compiler: g++
+compiler: gсс
 
 install:
  - sudo apt-get install make
